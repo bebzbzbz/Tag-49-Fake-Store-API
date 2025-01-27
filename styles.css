@@ -1,0 +1,128 @@
+/* = GENERAL */
+@font-face {
+    font-family: "Staatliches";
+    src: url(./assets/fonts/Staatliches-Regular.ttf);
+}
+@font-face {
+    font-family: "Roboto";
+    src: url(./assets/fonts/Roboto-VariableFont_wdth\,wght.ttf);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    padding: 3rem 10%;
+}
+
+input, button, select {
+    font-family: "Roboto", sans-serif;
+    padding: .5rem 1.5rem;
+    border: 1px solid black;
+    height: 40px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+/* = HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8rem;
+    align-items: center;
+}
+
+.logo {
+    text-decoration: none;
+    font-size: 3rem;
+    color: black;
+    font-family: "Staatliches", sans-serif;
+}
+
+nav {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.filters {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+nav button {
+    transition: opacity .2s ease;
+}
+nav button:hover {
+    opacity: .8;
+}
+
+/* = ITEM AREA */
+
+#item-area {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8rem 7rem;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    position: relative;
+}
+
+.item img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+}
+
+.price {
+    position: absolute;
+    font-size: 1.2rem;
+    top: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: .5rem 1rem;
+}
+
+
+.add-to-cart {
+    background-color: transparent;
+    color: black;
+    transition: background-color .2s ease, color .2s ease;
+}
+.add-to-cart:hover {
+    background-color: black;
+    color: white
+}
+
+.cart {
+    position: relative;
+}
+.cart img {
+    width: 40px;
+    height: 40px;
+}
+#cart-index-wrapper {
+    position: absolute;
+    right: 5px;
+    bottom: 2px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    height: 20px;
+    width: 20px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
