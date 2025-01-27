@@ -136,13 +136,18 @@ if(sortBySelect) {
 let cartIndex : number = 0;
 
 function addToCart(data : ItemData) {
+    const cartList = document.querySelector("#cart-list")
     const cartIndexElem = document.querySelector("#cart-index");
     const cartIndexWrapper = document.querySelector<HTMLDivElement>("#cart-index-wrapper");
 
-    if(cartIndexElem && cartIndexWrapper) {
+    if(cartIndexElem && cartIndexWrapper && cartList) {
         cartIndex++;
         cartIndexWrapper.style.display = "flex";
         cartIndexElem.textContent = cartIndex.toString();
+
+        const newListItem = document.createElement("li");
+        newListItem.textContent = data.title;
+        cartList.appendChild(newListItem);
     }
 
     cartItems.push(data);

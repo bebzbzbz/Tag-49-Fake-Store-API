@@ -17,12 +17,12 @@
 body {
     font-family: "Roboto", sans-serif;
     font-size: 12px;
-    padding: 3rem 10%;
+    padding: 3rem 3%;
 }
 
 input, button, select {
     font-family: "Roboto", sans-serif;
-    padding: .5rem 1.5rem;
+    padding: .3rem .5rem;
     border: 1px solid black;
     height: 40px;
     cursor: pointer;
@@ -30,12 +30,20 @@ input, button, select {
     color: white;
 }
 
+ul {
+    list-style: none;
+    width: 85%
+}
+li {
+    margin-bottom: 1rem;
+}
+
 /* = HEADER */
 
 header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8rem;
+    margin-bottom: 4rem;
     align-items: center;
 }
 
@@ -48,7 +56,7 @@ header {
 
 nav {
     display: flex;
-    gap: 3rem;
+    gap: .5rem;
     align-items: center;
 }
 
@@ -66,6 +74,12 @@ nav button:hover {
 }
 
 /* = ITEM AREA */
+
+main {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    gap: 2rem;
+}
 
 #item-area {
     display: grid;
@@ -95,6 +109,17 @@ nav button:hover {
     padding: .5rem 1rem;
 }
 
+/* = CART AREA */
+
+#cart-area {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-end;
+    position: fixed;
+    right: 3%;
+    position: relative;
+}
 
 .add-to-cart {
     background-color: transparent;
@@ -106,17 +131,14 @@ nav button:hover {
     color: white
 }
 
-.cart {
-    position: relative;
-}
 .cart img {
     width: 40px;
     height: 40px;
 }
 #cart-index-wrapper {
     position: absolute;
-    right: 5px;
-    bottom: 2px;
+    right: 0;
+    top: 25px;
     border-radius: 50%;
     background-color: black;
     color: white;
@@ -126,3 +148,4 @@ nav button:hover {
     justify-content: center;
     align-items: center;
 }
+
