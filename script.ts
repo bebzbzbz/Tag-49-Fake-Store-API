@@ -1,3 +1,5 @@
+// ==== ALL CODE AT ONCE ====
+
 import ky from "ky";
 import { ItemData } from "./itemData";
 
@@ -25,10 +27,10 @@ loadData();
 
 // ==== RENDER FUNCTION ====
 
-function renderItems(data : ItemData[]) {
+function renderItems(dataArray : ItemData[]) {
     itemArea!.innerHTML = "";
 
-    data.forEach((item) => {
+    dataArray.forEach((item) => {
         const newItemWrapper = document.createElement("div");
         itemArea!.appendChild(newItemWrapper);
         newItemWrapper.classList.add("item");
@@ -51,7 +53,7 @@ function renderItems(data : ItemData[]) {
         const addToCartBtn = document.createElement("button");
         addToCartBtn.textContent = "Add to cart";
         newItemWrapper.appendChild(addToCartBtn);
-        addToCartBtn.classList.add("add-to-cart")
+        addToCartBtn.classList.add("add-to-cart-btn")
 
         addToCartBtn.addEventListener("click", () => {
             addToCart(item);
@@ -133,23 +135,71 @@ if(sortBySelect) {
 
 // ==== ADD TO CART FUNCTION ====
 
-let cartIndex : number = 0;
+const cartList = document.querySelector("#cart-list")
+const cartIndexElem = document.querySelector("#cart-index");
+const cartIndexWrapper = document.querySelector<HTMLDivElement>("#cart-index-wrapper");
+
+let cartIdNum = 0;
 
 function addToCart(data : ItemData) {
-    const cartList = document.querySelector("#cart-list")
-    const cartIndexElem = document.querySelector("#cart-index");
-    const cartIndexWrapper = document.querySelector<HTMLDivElement>("#cart-index-wrapper");
+    if(totalElem) {
+        const dataWithCartId = {...data,cartId:cartIdNum}
+        cartIdNum++;
 
-    if(cartIndexElem && cartIndexWrapper && cartList) {
-        cartIndex++;
-        cartIndexWrapper.style.display = "flex";
-        cartIndexElem.textContent = cartIndex.toString();
+        cartItems.push(dataWithCartId);
+        console.log(cartItems);
 
-        const newListItem = document.createElement("li");
-        newListItem.textContent = data.title;
-        cartList.appendChild(newListItem);
+        renderCart(cartItems);
+        calcTotalInCart(cartItems)
     }
+}
 
-    cartItems.push(data);
-    console.log(cartItems);
+function renderCart(dataArray : ItemData[]) {
+    if(cartIndexElem && cartIndexWrapper && cartList) {
+        cartIndexWrapper.style.display = "flex";
+        cartIndexElem.textContent = dataArray.length.toString();
+        
+        cartList.innerHTML = "";
+
+        dataArray.forEach((item) => {
+            const newListItem = document.createElement("li");
+            newListItem.innerHTML = `${item.title}<br> — <b>${item.price} €</b>`;
+            cartList.appendChild(newListItem);
+        
+            const newRemoveBtn = document.createElement("button");
+            newRemoveBtn.textContent = "×";
+            newListItem.appendChild(newRemoveBtn);
+
+            // = REMOVE ITEM FROM CART LISTENER
+            newRemoveBtn.addEventListener("click", () => {
+                removeItemFromCart(item);
+            })
+        })
+        
+    }
+}
+
+function removeItemFromCart(data : ItemData) {
+    cartItems = cartItems.filter((elem) => elem.cartId !== data.cartId);
+
+    renderCart(cartItems);
+    calcTotalInCart(cartItems);
+}
+
+const totalElem = document.querySelector("#total");
+
+function calcTotalInCart(dataArray : ItemData[]) {
+    let totalSum = 0;
+
+    if(totalElem) {
+        if(dataArray.length > 0) {
+            dataArray.forEach((item) => {
+                totalSum += item.price;
+            })
+        } else {
+            totalSum = 0;
+        }
+
+        totalElem.textContent = `Total: ${totalSum.toLocaleString()} €`
+    }
 }

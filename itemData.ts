@@ -1,4 +1,5 @@
 export type ItemData = {
+    cartId: number,
     id: number
     title: string
     price: number
