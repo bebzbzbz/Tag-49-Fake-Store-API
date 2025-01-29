@@ -1,7 +1,7 @@
 // ==== ALL CODE AT ONCE ====
 
 import ky from "ky";
-import { ItemData } from "./itemData";
+import { ItemData } from "./assets/ts/itemData";
 
 const itemArea = document.querySelector("#item-area");
 

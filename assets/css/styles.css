@@ -39,10 +39,19 @@ li {
     margin-bottom: 1rem;
 }
 
+/* = CLASSES */
+
+.flex {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+}
+
 /* = HEADER */
 
 header {
-    display: flex;
     justify-content: space-between;
     margin-bottom: 4rem;
     align-items: center;
@@ -56,13 +65,11 @@ header {
 }
 
 nav {
-    display: flex;
     gap: .5rem;
     align-items: center;
 }
 
 .filters {
-    display: flex;
     gap: .5rem;
     align-items: center;
 }
@@ -77,13 +84,11 @@ nav button:hover {
 /* = ITEM AREA */
 
 main {
-    display: grid;
     grid-template-columns: 5fr 1fr;
     gap: 2rem;
 }
 
 #item-area {
-    display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 6rem;
 }
@@ -113,7 +118,6 @@ main {
 /* = CART AREA */
 
 #cart-area {
-    display: flex;
     flex-direction: column;
     gap: 2rem;
     align-items: flex-end;
@@ -121,7 +125,7 @@ main {
     position: fixed;
     width: 15%;
     overflow-y: auto;
-    height: 600px;
+    height: 70vh;
     padding-right: 1rem;
 }
 

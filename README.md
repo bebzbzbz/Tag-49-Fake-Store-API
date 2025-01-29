@@ -1,1 +1,1 @@
-<img src="./assets/fakestore.png">
+<img src="./assets/img/fakestore.png">

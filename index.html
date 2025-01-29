@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tag 25: API Project</title>
-    <script type="module" src="./renderItems.ts"></script>
-    <script type="module" src="./cart.ts"></script>
-    <script type="module" src="./filter.ts"></script>
-    <link rel="stylesheet" href="./styles.css">
+    <title>API Fake Store Project</title>
+    <script type="module" src="./assets/ts/renderItems.ts"></script>
+    <script type="module" src="./assets/ts/cart.ts"></script>
+    <script type="module" src="./assets/ts/filter.ts"></script>
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
-    <header>
+    <header class="flex">
         <a href="" class="logo">Fake store</a>
-        <nav>
-            <div class="filters">
+        <nav class="flex">
+            <div class="filters flex">
                 <p>Filter by categories:</p>
                 <button id="filter-electro">electronics</button>
                 <button id="filter-jewelery">jewelery</button>
@@ -33,10 +33,10 @@
             </div>
         </nav>
     </header>
-    <main>
-        <div id="item-area"></div>
-        <div id="cart-area">
-            <img src="./assets/cart.svg">
+    <main class="grid">
+        <div id="item-area" class="grid"></div>
+        <div id="cart-area" class="flex">
+            <img src="./assets/img/cart.svg">
             <div id="cart-index-wrapper">
                 <p id="cart-index"></p>
             </div>
